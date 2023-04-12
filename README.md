@@ -134,9 +134,9 @@ Tarayıcı açıldıktan sonra da, VSCode'da yeni oluşturduğun cypress klasör
 
 Zamanı verimli kullanmak için aşağıdaki sırayla geliştirme yapmanı tavsiye ediyoruz.
 
-1.  [Sipariş Formu](./Arayuz-Tasarimlari/Seviye-2-ADV/ADV-OrderPizza.png)
+1.  [Sipariş Onayı](./Arayuz-Tasarimlari/Seviye-2-ADV/ADV-Success.png)
 2.  [Anasayfa](./Arayuz-Tasarimlari/Seviye-2-ADV/ADV-Home.png)
-3.  [Sipariş Onayı](./Arayuz-Tasarimlari/Seviye-2-ADV/ADV-Success.png)
+3.  [Sipariş Formu](./Arayuz-Tasarimlari/Seviye-2-ADV/ADV-OrderPizza.png)
 
 ### Görev 3: ADV Proje Gereklilikleri
 
