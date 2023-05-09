@@ -1,0 +1,72 @@
+.anaFooter {
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px;
+  }
+  
+  .kart1 {
+    flex-basis: 30%;
+  }
+  
+  #logo1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .iconText {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .iconText img {
+    margin-right: 10px;
+  }
+  
+  #kart1-2 {
+    flex-basis: 30%;
+  }
+  
+  #kart1-2 h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .footMenu a {
+    color: #fff;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .footMenu a:hover {
+    color: #e91e63;
+  }
+  
+  #kart1-3 {
+    flex-basis: 30%;
+    flex-wrap: wrap;
+  }
+  
+  #kart1-3 h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    
+  }
+  
+  #insta img {
+    width: 80px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    filter: grayscale(100%);
+    transition: filter 0.2s ease-in-out;
+  }
+  
+  #insta img:hover {
+    filter: grayscale(0%);
+  }
+  

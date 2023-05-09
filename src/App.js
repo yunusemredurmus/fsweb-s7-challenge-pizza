@@ -1,10 +1,17 @@
 import React from "react";
-
+import Home from './layout/Home'
+import { Routes, Route } from 'react-router-dom';
+import SiparisVer from "./pages/SiparisVer";
 const App = () => {
   return (
     <>
-      <h1>Teknolojik Yemekler</h1>
-      <p>Burdaki kodu silip kendi headerınızı ekleyebilirsiniz</p>
+      <Routes>
+        <Route path='/*' element={<Home />} />
+        <Route path ='/SiparisVer' element={<SiparisVer/>}>
+       <Route path="/SiparisVer/:id" element={<SiparisVer/>}/>
+       </Route>
+      </Routes >
+
     </>
   );
 };

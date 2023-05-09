@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,100&display=swap');
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 15px 0px;
+
+}
+
+.nav2 {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.nav-item {
+    display: flex;
+}
+
+.nav-item img {
+    height: 50px;
+}
+
+.nav-item p {
+    color: #000000;
+    font-family: 'Barlow', sans-serif;
+    margin: auto 5px;
+    font-weight: bold;
+}

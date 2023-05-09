@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@700&display=swap');
+
+.tumbolum {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0px;
+}
+
+#tumbolum div {
+    margin: 25px 10px;
+}
+
+#kare1 {
+    background-image: url('./imagesKart/kart-1.png');
+    height: 536px;
+    width: 636px;
+    background-size: contain;
+    border-radius: 10px;
+    margin-top: 0;
+}
+
+#btn0 {
+    background-color: white;
+    color: red;
+    margin-left: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.sagbolum {
+    margin-left: 20px;
+}
+
+.advBaslik {
+    color: white;
+    font-family: 'Quattrocento', serif;
+    font-size: 1.5rem;
+    padding: 50px;
+    margin: 0px;
+}
+
+.advBaslik2 {
+    color: rgb(13, 13, 13);
+    font-family: 'Quattrocento', serif;
+    font-size: 1.5rem;
+    padding: 50px;
+    margin: 0;
+}
+
+#kart2 {
+    background-image: url('./imagesKart/kart-2.png');
+    background-size: contain;
+    height: 256px;
+    width: 636px;
+    border-radius: 10px;
+}
+
+#btn1 {
+    background-color: rgb(255, 255, 255);
+    color: red;
+    margin-left: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.specBas {
+    color: white;
+    font-family: 'Quattrocento', serif;
+    font-size: 4em;
+    text-align: left;
+}
+
+#kart3 {
+    background-image: url('./imagesKart/kart-3.png');
+    background-size: contain;
+    height: 256px;
+    width: 636px;
+    border-radius: 10px;
+}
+
+#red {
+    color: red;
+}
