@@ -23,8 +23,7 @@ const Menu = () => {
             });
     }, []);
 
-    const handleSubmit = () => {
-    }
+
 
     return (
         <div>
@@ -65,7 +64,8 @@ const Menu = () => {
             <div className='tumMenu'>
                 {products.map((product) => (
                     <Link key={product.id} to={`/siparisver/${product.id}`}>
-                        <div key={product.id} className='menu-item' onClick={handleSubmit}>
+                        <div key={product.id} className='menu-item'
+                        >
                             <img
                                 className='menu-item-image'
                                 src={product.img}
