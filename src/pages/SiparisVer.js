@@ -1,10 +1,13 @@
 import React from 'react'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import './siparisver.css';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import logo from '../comp/logo.svg'
+import Footer from '../comp/Footer';
+import * as yup from 'yup';
 
 const ekstra = [
   "Pepperoni",
@@ -24,6 +27,17 @@ const ekstra = [
 
 const SiparisVer = () => {
   const { id } = useParams();
+
+
+  const schema = yup.object().shape({
+    siparisnotu: yup.string().required('Sipariş notu zorunludur.'),
+    malzemeler: yup.array().min(1, 'En az 1 malzeme seçmelisiniz.'),
+  });
+
+  const [formErrors, setFormErrors] = useState({});
+
+
+
   console.log("merhaba", id)
   const [ürünler, setÜrünler] = useState([]);
   useEffect(() => {
@@ -39,30 +53,64 @@ const SiparisVer = () => {
 
   const [malzemeler, setMalzemeler] = useState([]);
 
-
+  const history = useHistory();
 
 
   const [pizzaSize, setPizzaSize] = useState("medium");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = {
-      pizzaBoyutu: pizzaSize,
-      siparisnotu: siparisnotu,
-      malzemeler: malzemeler,
-      kalinlik: hamurkalinlik,
-    };
-    fetch("https://6458cba08badff578efb0e53.mockapi.io/pizza/order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+
+    schema
+      .validate({ siparisnotu, malzemeler, hamurkalinlik, pizzaSize })
+      .then(() => {
+        const data = {
+          pizzaBoyutu: pizzaSize,
+          siparisnotu: siparisnotu,
+          malzemeler: malzemeler,
+          kalinlik: hamurkalinlik,
+          toplamtutar: toplamFiyat,
+          ekmalzemelerin: sayilarınToplamFiyatı,
+          üfiyat: ürünler.Fiyati,
+        };
+
+        fetch("https://6458cba08badff578efb0e53.mockapi.io/pizza/order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            history.push(`/confirmorder/${sonSiparisId}`);
+          })
+          .catch((error) => console.error(error));
+      })
+      .catch((error) => {
+        const errors = {};
+        errors.siparisnotu = error.errors[0];
+        setFormErrors(errors);
+      });
   };
+
+
+  const [sonSiparisId, setSonSiparisId] = useState("");
+  console.log("sonSiparisId", sonSiparisId);
+  useEffect(() => {
+    axios.get("https://6458cba08badff578efb0e53.mockapi.io/pizza/order")
+      .then((response) => {
+        const sonSiparisIdFromAPI = response.data[response.data.length - 1].id;
+        const sonSiparisIdNumber = parseInt(sonSiparisIdFromAPI);
+        const yeniSiparisId = sonSiparisIdNumber + 1;
+        setSonSiparisId(yeniSiparisId.toString());
+        console.log("En son yüklenen siparişin ID'si:", sonSiparisIdFromAPI);
+      })
+      .catch((error) => {
+        console.error("API'den veriler alınamadı:", error);
+      });
+  }, []);
 
   const handlePizzaSizeChange = (event) => {
     setPizzaSize(event.target.value);
@@ -83,6 +131,7 @@ const SiparisVer = () => {
       setMalzemeler(malzemeler.filter(malzeme => malzeme != event.target.value))
     }
   };
+
 
   useEffect(() => {
     console.log(malzemeler)
@@ -105,10 +154,14 @@ const SiparisVer = () => {
 
   const sayilarınToplamFiyatı = malzemeSayisi * 5;
 
-  const toplamFiyat = ürünler.Fiyati + sayilarınToplamFiyatı
+  const üfiyat = ürünler.Fiyati
 
+  const toplamFiyat = ürünler.Fiyati + sayilarınToplamFiyatı
+  console.log(toplamFiyat)
 
   return (
+
+
     <div>
       <div className='siphead'>
         <Link to="/">
@@ -218,7 +271,7 @@ const SiparisVer = () => {
                       type="checkbox"
                       id='checkmalz'
                       value={malzeme}
-                      checked={malzemeler[malzeme.toLowerCase()]}
+                      checked={malzemeler.includes(malzeme)}
                       onChange={handleMalzemeInputChange}
                     />
                     {malzeme}
@@ -236,7 +289,9 @@ const SiparisVer = () => {
             <form onSubmit={handleSubmit}>
               <label>
                 <textarea id='txtbut' type="text" placeholder="Siparişine eklemek istediğin bir not var mı?" value={siparisnotu} onChange={siparisnotguncelle}> </textarea>
-              </label>
+              </label> {formErrors.siparisnotu && (
+                <p className="error">{formErrors.siparisnotu}</p>
+              )}
               <hr />
 
               <div id='sipTop'>
@@ -245,17 +300,30 @@ const SiparisVer = () => {
                 <span id='Toplamred'> Toplam {toplamFiyat} </span>
               </div>
               <div id='sipcreate'>
-                <button type="submit" >Sipariş Et</button>
+                <button id="sipbu" type="submit" onClick={handleSubmit}> Sipariş Et !
+                </button>
+
 
               </div>
             </form>
           </div>
           <br />
-
+          <div>
+            {/* <Switch>
+              <Route path="/confirmorder/:id">
+                <ConfirmOrder />
+              </Route>
+            </Switch> */}
+          </div>
 
         </div>
       </div>
+      <div>
+        <Footer />
+      </div>
     </div >
+
+
   );
 }
 

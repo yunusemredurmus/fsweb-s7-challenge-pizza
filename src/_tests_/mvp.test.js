@@ -42,11 +42,11 @@ describe("Pizza test, sprint 7 challenge", () => {
       <MemoryRouter initialEntries={['/pizza']}>
         <App />
         <Route
-        path="*"
-        render={({ location }) => {
-          testLocation = location;
-          return null;
-        }}
+          path="*"
+          render={({ location }) => {
+            testLocation = location;
+            return null;
+          }}
         />
       </MemoryRouter>
     );
@@ -61,11 +61,11 @@ describe("Pizza test, sprint 7 challenge", () => {
       <MemoryRouter initialEntries={['/pizza']}>
         <App />
         <Route
-        path="*"
-        render={({ location }) => {
-          testLocation = location;
-          return null;
-        }}
+          path="*"
+          render={({ location }) => {
+            testLocation = location;
+            return null;
+          }}
         />
       </MemoryRouter>
     );
@@ -80,11 +80,11 @@ describe("Pizza test, sprint 7 challenge", () => {
       <MemoryRouter initialEntries={['/pizza']}>
         <App />
         <Route
-        path="*"
-        render={({ location }) => {
-          testLocation = location;
-          return null;
-        }}
+          path="*"
+          render={({ location }) => {
+            testLocation = location;
+            return null;
+          }}
         />
       </MemoryRouter>
     );
@@ -92,7 +92,7 @@ describe("Pizza test, sprint 7 challenge", () => {
     const nameInput = document.querySelector('#name-input')
     expect(nameInput).toBeInTheDocument()
     fireEvent.input(nameInput, {
-      target: {value: 'a'}
+      target: { value: 'a' }
     })
     await waitFor(() => {
       expect(screen.getByText('İsim en az 2 karakter olmalıdır')).toBeInTheDocument()
@@ -106,11 +106,11 @@ describe("Pizza test, sprint 7 challenge", () => {
       <MemoryRouter initialEntries={['/pizza']}>
         <App />
         <Route
-        path="*"
-        render={({ location }) => {
-          testLocation = location;
-          return null;
-        }}
+          path="*"
+          render={({ location }) => {
+            testLocation = location;
+            return null;
+          }}
         />
       </MemoryRouter>
     );
@@ -125,11 +125,11 @@ describe("Pizza test, sprint 7 challenge", () => {
       <MemoryRouter initialEntries={['/pizza']}>
         <App />
         <Route
-        path="*"
-        render={({ location }) => {
-          testLocation = location;
-          return null;
-        }}
+          path="*"
+          render={({ location }) => {
+            testLocation = location;
+            return null;
+          }}
         />
       </MemoryRouter>
     );
@@ -144,11 +144,11 @@ describe("Pizza test, sprint 7 challenge", () => {
       <MemoryRouter initialEntries={['/pizza']}>
         <App />
         <Route
-        path="*"
-        render={({ location }) => {
-          testLocation = location;
-          return null;
-        }}
+          path="*"
+          render={({ location }) => {
+            testLocation = location;
+            return null;
+          }}
         />
       </MemoryRouter>
     );
@@ -163,11 +163,11 @@ describe("Pizza test, sprint 7 challenge", () => {
       <MemoryRouter initialEntries={['/pizza']}>
         <App />
         <Route
-        path="*"
-        render={({ location }) => {
-          testLocation = location;
-          return null;
-        }}
+          path="*"
+          render={({ location }) => {
+            testLocation = location;
+            return null;
+          }}
         />
       </MemoryRouter>
     );
@@ -207,7 +207,7 @@ describe("Pizza test, sprint 7 challenge", () => {
     })
 
     axios.post.mockImplementationOnce(() =>
-      Promise.resolve({testOrder})
+      Promise.resolve({ testOrder })
     );
     const orderButton = document.querySelector('#order-button')
     userEvent.click(orderButton)

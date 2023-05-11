@@ -31,10 +31,10 @@ const Footer = () => {
             <div id='kart1-2'>
                 <h1>Sıccacık Menüler</h1>
                 <div className='footMenu'>
-                    <a href='menu'>Terminal Pizza</a>
-                    <a href='menu'>5 Kişilik Hackathlon Pizza</a>
-                    <a href='menu'>useEffect Tavuklu Pizza</a>
-                    <a href='menu'>Beyaz Console Frosty</a>
+                    <a href='/'>Terminal Pizza</a>
+                    <a href='/'>5 Kişilik Hackathlon Pizza</a>
+                    <a href='/'>useEffect Tavuklu Pizza</a>
+                    <a href='/'>Beyaz Console Frosty</a>
                 </div>
             </div>
             <div id='kart1-3'>

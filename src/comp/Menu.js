@@ -7,8 +7,8 @@ import icon4 from './icons/4.svg';
 import icon5 from './icons/5.svg';
 import icon6 from './icons/6.svg';
 import './menu.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import SiparisVer from '../pages/SiparisVer';
-import { Link } from 'react-router-dom';
 
 const Menu = () => {
     const [products, setProducts] = useState([]);
@@ -77,10 +77,18 @@ const Menu = () => {
                                 <p className='menu-item-price'>{product.Fiyati} ₺</p>
                             </div>
                         </div>
+
                     </Link>
                 ))}
             </div>
-        </div>
+            <div>
+                <Switch>
+                    <Route exact path="/SiparisVer" component={SiparisVer} />
+                    <Route exact path="/SiparisVer/:id" component={SiparisVer} />
+                </Switch>
+
+            </div>
+        </div >
     );
 };
 

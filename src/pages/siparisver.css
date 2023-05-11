@@ -234,15 +234,11 @@ input[type="radio"]:checked::after {
     justify-content: end;
 }
 
-button {
+#sipbu {
     border: 0;
     border-radius: 0;
     padding-inline-start: 50px;
     padding-inline-end: 50px;
-
-}
-
-button[type="submit"] {
-    color: black;
     font-family: 'Barlow', sans-serif;
+
 }
