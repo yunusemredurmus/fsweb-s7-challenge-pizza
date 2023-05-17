@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../comp/logo.svg';
-import './confirmorder.css';
 import Footer from '../comp/Footer';
+import './confirmorder.css'; 
+
 const ConfirmOrder = () => {
     const { id } = useParams();
     const [confirmed, setConfirmed] = useState([]);

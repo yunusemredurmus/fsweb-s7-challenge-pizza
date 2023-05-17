@@ -19,10 +19,14 @@
 
 #tx {
     color: yellow;
-    font-family: 'Satisfy', cursive;
-    font-size: 1.3rem;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
+
+}
+
+#tx p {
+    font-family: 'Satisfy', cursive;
     font-size: 1.4rem;
     margin: 0px;
     margin-top: 50px;

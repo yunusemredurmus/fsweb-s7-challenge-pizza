@@ -3,11 +3,11 @@ import { useParams, Link, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
-import './siparisver.css';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import logo from '../comp/logo.svg'
 import Footer from '../comp/Footer';
 import * as yup from 'yup';
+import './siparisver.css';
+import logo from '../comp/logo.svg'
 
 const ekstra = [
   "Pepperoni",
@@ -65,10 +65,8 @@ const SiparisVer = () => {
       .validate({ siparisnotu, malzemeler, hamurkalinlik, pizzaSize })
       .then(() => {
         const data = {
-          pizzaBoyutu: pizzaSize,
           siparisnotu: siparisnotu,
           malzemeler: malzemeler,
-          kalinlik: hamurkalinlik,
           toplamtutar: toplamFiyat,
           ekmalzemelerin: sayilarınToplamFiyatı,
           üfiyat: ürünler.Fiyati,
@@ -95,9 +93,13 @@ const SiparisVer = () => {
       });
   };
 
-
+/**
+ * 
+ */
   const [sonSiparisId, setSonSiparisId] = useState("");
-  console.log("sonSiparisId", sonSiparisId);
+
+
+  
   useEffect(() => {
     axios.get("https://6458cba08badff578efb0e53.mockapi.io/pizza/order")
       .then((response) => {
@@ -112,10 +114,16 @@ const SiparisVer = () => {
       });
   }, []);
 
+  /**
+   * PİZZA BOYUTU GÜNC.
+   * @param {setPizzaSize} event 
+   */
   const handlePizzaSizeChange = (event) => {
     setPizzaSize(event.target.value);
   };
-
+/**
+ * Sipariş notu güncellenir
+ */
   const [siparisnotu, setSiparişnotu] = useState("")
   const siparisnotguncelle = (e) => {
     setSiparişnotu(e.target.value)
@@ -123,6 +131,10 @@ const SiparisVer = () => {
   console.log(siparisnotu)
   console.log("Pizza Boyutum ", pizzaSize)
 
+  /**
+   * Eklenen malzemeyi checkler ve işaret var ise malzemelere seçili olanı ekler eğer seçimi kaldırırsa malzemeler içierisini kontrol eder ve siler
+   * @param {setMalzemeler} event 
+   */
   // Malzemelerdeki checkbox ı kontrol ediyoruz if kullanarak eğer seçiliyse malzemelerin içerisine gönderiyoruz.
   const handleMalzemeInputChange = (event) => {
     if (event.target.checked) {
@@ -132,7 +144,9 @@ const SiparisVer = () => {
     }
   };
 
-
+/**
+ * Malzeme Kontrolü 
+ */
   useEffect(() => {
     console.log(malzemeler)
   }, [malzemeler])
@@ -184,7 +198,7 @@ const SiparisVer = () => {
             <Link to="/">Anasayfa</Link>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <Link to="/seçenekler">Seçenekler</Link>
+            <Link to="/">Seçenekler</Link>
           </BreadcrumbItem>
           <BreadcrumbItem active tag="span">
             Sipariş Oluştur
