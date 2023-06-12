@@ -80,7 +80,6 @@ context('Actions', () => {
 
     cy.get('#icerikpizza > :nth-child(3)')
       .should('contain', 'Pepperoni');
-
   });
 
 });

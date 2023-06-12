@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../comp/logo.svg';
 import Footer from '../comp/Footer';
-import './confirmorder.css'; 
+import './confirmorder.css';
 
 const ConfirmOrder = () => {
     const { id } = useParams();
@@ -30,6 +30,7 @@ const ConfirmOrder = () => {
         .catch(err => {
             console.log(err);
         });
+
     // 5 dakika (300000 ms) 5 dk sonra güncellenecek 
 
 
@@ -72,7 +73,7 @@ const ConfirmOrder = () => {
                     </div>
                 </div>
             </div>
-            <div className='footer'> <Footer /></div>
+            <Footer />
 
         </div>
     );
