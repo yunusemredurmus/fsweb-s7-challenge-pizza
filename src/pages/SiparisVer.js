@@ -1,7 +1,6 @@
 import React from 'react'
-import { useParams, Link, useHistory } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import Footer from '../comp/Footer';
@@ -28,13 +27,14 @@ const ekstra = [
 const SiparisVer = () => {
   const { id } = useParams();
 
+  const [formErrors, setFormErrors] = useState({});
+
 
   const schema = yup.object().shape({
     siparisnotu: yup.string().required('Sipariş notu zorunludur.'),
     malzemeler: yup.array().min(1, 'En az 1 malzeme seçmelisiniz.'),
   });
 
-  const [formErrors, setFormErrors] = useState({});
 
 
 
@@ -53,7 +53,7 @@ const SiparisVer = () => {
 
   const [malzemeler, setMalzemeler] = useState([]);
 
-  const history = useHistory();
+const navigate = useNavigate();
 
 
   const [pizzaSize, setPizzaSize] = useState("medium");
@@ -82,7 +82,7 @@ const SiparisVer = () => {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            history.push(`/confirmorder/${sonSiparisId}`);
+            navigate(`/confirmorder/${sonSiparisId}`);
           })
           .catch((error) => console.error(error));
       })
@@ -310,8 +310,8 @@ const SiparisVer = () => {
 
               <div id='sipTop'>
                 <h2>Sipariş Toplamı</h2>
-                <p>Seçimler {sayilarınToplamFiyatı}</p>
-                <span id='Toplamred'> Toplam {toplamFiyat} </span>
+                <p>Seçimler: {sayilarınToplamFiyatı}</p>
+                <span id='Toplamred'> Toplam: {toplamFiyat} </span>
               </div>
               <div id='sipcreate'>
                 <button id="sipbu" type="submit" onClick={handleSubmit}> Sipariş Et !
